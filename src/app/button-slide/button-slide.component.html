@@ -1,0 +1,6 @@
+<p>button-slide</p>
+<div class="button-group-slide">
+    <button (click)="clickTab('left')">Left</button>
+    <button (click)="clickTab('right')">Right</button>
+    <div class="active" [class.move]="activeTab === 'right'"></div>
+</div>
