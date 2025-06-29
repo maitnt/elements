@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@import './assets/mixin.scss';
+
+body {
+    display: flex;
+    margin: 0;
+    font-size: clamp(.75rem, 1.5vw, 2rem); // min, preferred, max font-size. the text will be bigger as the screen is bigger
+}
+
+.box {
+    height: 100px;
+    background: purple;
+    width: clamp(100px, 75%, 500px); // min-width, width, max-width;
+}
+
+.grid {
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); // auto expand width of element evenly from 200px to 1fr
+} // fr la flexible unit, 1fr = 1 fraction of the available space, tính dựa trên phần ko gian còn lại có thể phân chia
+
+@media (orientation: portrait) { 
+    .box {
+        background: red;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .box {
+        background: green;
+    }
+}
+
+.wrapper, .inner { // if container .wrapper, .inner's width is bigger than 400px then .box will apply background lightblue
+    container-type: inline-size;
+}
+
+@container (min-width: 400px) {
+    .box {
+        background: lightblue;
+    }
+}
+$screen-sm: 400px; // === @custom-media screen-sm (max-width: 400px); scss compile sẽ ra như này
+@media (max-width: $screen-sm) {
+    .box {
+        background: pink;
+    }
+}
+

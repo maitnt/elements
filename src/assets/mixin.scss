@@ -1,0 +1,13 @@
+@mixin respond-sm {
+    @media (max-width: 400px) {
+      @content;
+    }
+  }
+  
+  .box {
+    background: blue;
+  
+    @include respond-sm {
+      background: pink;
+    }
+  }
